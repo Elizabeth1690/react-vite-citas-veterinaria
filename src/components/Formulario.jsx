@@ -4,7 +4,7 @@ import Input from "./Input";
 import Error from "./Error";
 //import Pacientes from "./Pacientes";
 
-const Formulario = ({ pacientes, setPacientes, paciente }) => {
+const Formulario = ({ pacientes, setPacientes, paciente, setPaciente }) => {
   const [nombre, setNombre] = useState('');
   const [propietario, setPropietario] = useState('');
   const [email, setEmail] = useState('');
@@ -52,9 +52,10 @@ const Formulario = ({ pacientes, setPacientes, paciente }) => {
     if (paciente.id) {
       // Editando registro
       const pacientesActualizados = pacientes.map((pacienteState) =>
-        pacienteState.id === paciente.id ? { ...pacienteState, ...pacienteData } : pacienteState
+        pacienteState.id === paciente.id ? { ...pacienteData } : pacienteState
       );
       setPacientes(pacientesActualizados);
+      setPaciente({});
     } else {
       // Nuevo registro
       pacienteData.id = generarId();
